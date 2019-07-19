@@ -3,9 +3,10 @@ export const createSnapshot = (snapshot) => {
         //make async call to database
         const firestore = getFirestore();
         firestore.collection('snapshots').add({
-            authorId: 'Minyewoo',
-            conclusion: snapshot.content,
-            snapshot: snapshot.content,
+            author: 'Minyewoo',
+            conclusion: snapshot.conclusion,
+            image: snapshot.image,
+            mask: snapshot.mask,
             createdAt: new Date()
         }).then(() => {
             dispatch({ type: 'CREATE_SNAPSHOT', snapshot});
