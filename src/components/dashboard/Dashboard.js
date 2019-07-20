@@ -10,7 +10,6 @@ class Dashboard extends Component {
         const { snapshots, auth } = this.props
         if(!auth.uid) return <Redirect to='/signin' />
         
-
         return (
             <div className="dashboard container">
                 <div className="row">

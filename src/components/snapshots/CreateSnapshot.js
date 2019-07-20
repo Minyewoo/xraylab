@@ -78,7 +78,8 @@ export class CreateSnapshot extends Component {
 
         return (
             <div className="container">
-                <form onSubmit={this.handleSubmit} className="white">
+                <div className="row">
+                <form onSubmit={this.handleSubmit} className="white col s6 push-s3">
                     <h5 className="grey-text text-darken-3">Create new snapshot</h5>
 
                     <div className="input-field">
@@ -97,9 +98,10 @@ export class CreateSnapshot extends Component {
                     </div>
 
                     <div className="input-field">
-                        <button className="btn pink lighten-1 z-depth-0">Create</button>
+                        <button className="t-btn up-txt">Create</button>
                     </div>
                 </form>
+                </div>
             </div>
         )
     }

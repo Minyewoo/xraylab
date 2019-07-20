@@ -5,8 +5,7 @@ export class SignUp extends Component {
     state = {
         email: '',
         password: '',
-        firstName: '',
-        lastName: ''
+        nickname: '',
     }
 
     handleChange = (e) => {
@@ -26,7 +25,8 @@ export class SignUp extends Component {
 
         return (
             <div className="container">
-                <form onSubmit={this.handleSubmit} className="white">
+                <div className="row">
+                <form onSubmit={this.handleSubmit} className="white white col s6 push-s3">
                     <h5 className="grey-text text-darken-3">Sign Up</h5>
                     
                     <div className="input-field">
@@ -40,19 +40,15 @@ export class SignUp extends Component {
                     </div>
 
                     <div className="input-field">
-                        <label htmlFor="firstName">First Name</label>
-                        <input type="text" id="firstName" onChange={this.handleChange}/>
+                        <label htmlFor="nickname">Nickname</label>
+                        <input type="text" id="nickname" onChange={this.handleChange}/>
                     </div>
 
                     <div className="input-field">
-                        <label htmlFor="lastName">Last Name</label>
-                        <input type="text" id="lastName" onChange={this.handleChange}/>
-                    </div>
-
-                    <div className="input-field">
-                        <button className="btn pink lighten-1 z-depth-0">Sign Up</button>
+                        <button className="t-btn up-txt">Sign Up</button>
                     </div>
                 </form>
+                </div>
             </div>
         )
     }
