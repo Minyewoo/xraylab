@@ -7,8 +7,8 @@ const SnapshotList = ({snapshots}) => {
         <div className="snapshot-list section">
             { snapshots && snapshots.map(snapshot => {
                 return (
-                    <Link to={'/snapshot/' + snapshot.id}>
-                        <SnapshotSummary snapshot={snapshot} key={snapshot.id} />
+                    <Link to={'/snapshot/' + snapshot.id} key={snapshot.id}>
+                        <SnapshotSummary snapshot={snapshot} />
                     </Link>
                 )
             })}

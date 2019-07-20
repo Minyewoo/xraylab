@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
+import { Redirect } from 'react-router-dom'
+
 
 function timestampToDate(timestamp) {
     return Date(timestamp.miliseconds * 1000);
@@ -9,7 +11,9 @@ function timestampToDate(timestamp) {
 
 const SnapshotDetails = (props) => {
     console.log(props);
-    const { snapshot } = props;
+    const { snapshot, auth } = props;
+    if(!auth.uid) return <Redirect to='/signin' />
+
     if (snapshot) {
         return (
             <div className="container section snapshot-details">
@@ -41,7 +45,8 @@ const mapStateToProps = (state, ownProps) => {
     const snapshots = state.firestore.data.snapshots;
     const snapshot = snapshots ? snapshots[id] : null;
     return {
-        snapshot: snapshot
+        snapshot: snapshot,
+        auth: state.firebase.auth
     }
 }
 
