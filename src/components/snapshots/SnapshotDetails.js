@@ -20,8 +20,8 @@ const SnapshotDetails = (props) => {
                 <div className="card z-depth-0">
                     <div className="card-content">
                         <span className="card-title">Snapshot #{props.match.params.id}</span>
-                        <img src={snapshot.image} alt="Red dot" />
-                        <img src={snapshot.mask} alt="Red dot" />
+                        <img src={snapshot.image} alt='' />
+                        <img src={snapshot.mask}  alt='' />
                         <p>{snapshot.conclusion}</p>
                     </div>
                     <div className="card-action gret lighten-4 grey-text">
