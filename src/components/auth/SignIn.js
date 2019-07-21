@@ -21,7 +21,8 @@ export class SignIn extends Component {
     }
 
     render() {
-        const { authError, auth } = this.props;
+        const { signinError, auth } = this.props;
+        console.log(this.props);
         if(auth.uid) return <Redirect to='/' />
 
         return (
@@ -43,7 +44,7 @@ export class SignIn extends Component {
                     <div className="input-field">
                         <button className="t-btn up-txt">Login</button>
                         <div className="red-text center">
-                            {authError ? <p>{authError}</p> : null}
+                            {signinError ? <p>{signinError}</p> : null}
                         </div>
                     </div>
                 </form>

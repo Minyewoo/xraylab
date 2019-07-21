@@ -3,6 +3,7 @@ import SnapshotSummary from './SnapshotSummary';
 import { Link } from 'react-router-dom'
 
 const SnapshotList = ({snapshots}) => {
+    console.log(snapshots);
     return (
         <div className="snapshot-list section">
             { snapshots && snapshots.map(snapshot => {

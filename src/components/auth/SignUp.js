@@ -22,7 +22,7 @@ export class SignUp extends Component {
     }
 
     render() {
-        const { auth, authError } = this.props;
+        const { auth } = this.props;
         if(auth.uid) return <Redirect to='/' />
 
         return (
@@ -48,9 +48,6 @@ export class SignUp extends Component {
 
                     <div className="input-field">
                         <button className="t-btn up-txt">Sign Up</button>
-                        <div className="red-text center">
-                            { authError ? <p>{ authError }</p> : null }
-                        </div>
                     </div>
                 </form>
                 </div>

@@ -5,10 +5,9 @@ import { Redirect } from 'react-router-dom'
 
 export class CreateSnapshot extends Component {
     state = {
-        title: '',
         conclusion: '',
         image: '',
-        mask: ''
+        mask: '',
     }
 
     callback = (key, value) => {
@@ -68,7 +67,6 @@ export class CreateSnapshot extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        //console.log(this.state);
         this.props.createSnapshot(this.state)
     }
 

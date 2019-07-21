@@ -25,7 +25,7 @@ const SnapshotDetails = (props) => {
                         <p>{snapshot.conclusion}</p>
                     </div>
                     <div className="card-action gret lighten-4 grey-text">
-                        <div>Posted by {snapshot.authorId}</div>
+                        <div>Posted by {snapshot.author}</div>
                         <p className="grey-text">{timestampToDate(snapshot.createdAt)}</p>
                     </div>
                 </div>
