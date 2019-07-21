@@ -90,15 +90,14 @@ code {
   margin: 0 0 32px 0;
   padding: 0 64px;
   z-index: 1;
+  line-height: 93px;
 }
 
-.navbar-buttons li{
-  height: 100%;
-}
+
+
 
 .navbar-buttons li a{
   color: black;
-  height: 100%;
 }
 
 .logo {
