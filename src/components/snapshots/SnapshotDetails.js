@@ -3,11 +3,7 @@ import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
-
-
-function timestampToDate(timestamp) {
-    return Date(timestamp.miliseconds * 1000);
-}
+import moment from 'moment'
 
 const SnapshotDetails = (props) => {
     console.log(props);
@@ -26,7 +22,7 @@ const SnapshotDetails = (props) => {
                     </div>
                     <div className="card-action gret lighten-4 grey-text">
                         <div>Posted by {snapshot.author}</div>
-                        <p className="grey-text">{timestampToDate(snapshot.createdAt)}</p>
+                        <p className="grey-text">{moment(snapshot.createdAt.toDate()).calendar()}</p>
                     </div>
                 </div>
             </div>
