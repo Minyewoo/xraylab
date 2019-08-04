@@ -93,33 +93,8 @@ code {
   line-height: 93px;
 }
 
-
-
-
 .navbar-buttons li a{
   color: black;
-}
-
-.navbar-buttons li:hover {
-  background: #fafafa;
-}
-
-.navbar-buttons li::before {
-  position: absolute;
-  content: "";
-  height: 3px;
-  width: 0;
-  
-  left: 50%;
-  bottom: 0;
-  background-color: #000000;
-  
-  transition: 0.4s ease-in-out;
-}
-
-.navbar-buttons li[state="active"]::before {
-  left: 0;
-  width: 100%;
 }
 
 .logo {
