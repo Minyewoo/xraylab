@@ -9,10 +9,10 @@ const Navbar = (props) => {
     const { auth, profile } = props;
     const links = auth.uid ? <SignedInLinks profile={profile} /> : <SignedOutLinks />
     return (
-        <nav className="top-navbar">
-                <Link to='/' className="logo">xraylab</Link>
+        <div className="header wrapper">
+                <Link to='/' className="header__logo">xraylab</Link>
                 { links }
-        </nav>
+        </div>
     )
 }
 
