@@ -7,9 +7,10 @@ const SnapshotList = ({snapshots}) => {
     return (
         <div className="snapshot-list section">
             { snapshots && snapshots.map(snapshot => {
+                let index = snapshots.indexOf(snapshot);
                 return (
                     <Link to={'/snapshot/' + snapshot.id} key={snapshot.id}>
-                        <SnapshotSummary snapshot={snapshot} />
+                        <SnapshotSummary snapshot={snapshot}/>
                     </Link>
                 )
             })}

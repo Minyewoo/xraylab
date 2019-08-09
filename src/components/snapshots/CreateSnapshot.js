@@ -68,7 +68,7 @@ export class CreateSnapshot extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.createSnapshot(this.state)
-        this.props.history.push('/')
+        this.props.history.push('/dashboard')
     }
 
     render() {

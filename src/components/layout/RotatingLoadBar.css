@@ -1,0 +1,72 @@
+/* load-bar */
+
+.load-bar {
+    display: inline-block;
+    margin: 0 32px 0 0;
+    width: 70px;
+    height: 70px;
+    
+  /*   border: 10px solid; */
+    background: conic-gradient(
+      #151515 0.0%, #151515 45.0%,
+      #151515 45.0%, #ffffff 75.0%,
+      #ffffff 75.0%, #ffffff 100.0%
+    );
+    border-radius: 35px;
+  }
+  
+  .load-bar:before {
+    position: absolute;
+    content: "";
+    height: 50px;
+    width: 50px;
+    left: 10px;
+    bottom: 10px;
+    background-color: #ffffff;
+    border-radius: 25px;
+  }
+  
+  @-webkit-keyframes rotating {
+    from {
+      -webkit-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    to {
+      -webkit-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes rotating {
+    from {
+      -ms-transform: rotate(-90deg);
+      -moz-transform: rotate(-90deg);
+      -webkit-transform: rotate(-90deg);
+      -o-transform: rotate(-90deg);
+      transform: rotate(-90deg);
+    }
+    to {
+      -ms-transform: rotate(270deg);
+      -moz-transform: rotate(270deg);
+      -webkit-transform: rotate(270deg);
+      -o-transform: rotate(270deg);
+      transform: rotate(270deg);
+    }
+  }
+  .rotating {
+    -webkit-animation: rotating 1.5s linear infinite reverse;
+    -moz-animation: rotating 1.5s linear infinite reverse;
+    -ms-animation: rotating 1.5s linear infinite reverse;
+    -o-animation: rotating 1.5s linear infinite reverse;
+    animation: rotating 1.5s linear infinite reverse;
+  }
+  
+  .rotating-ease {
+    -webkit-animation: rotating 1.5s ease-in-out infinite reverse;
+    -moz-animation: rotating 1.5s ease-in-out infinite reverse;
+    -ms-animation: rotating 1.5s ease-in-out infinite reverse;
+    -o-animation: rotating 1.5s ease-in-out infinite reverse;
+    animation: rotating 1.5s ease-in-out infinite reverse;
+  }
+  
