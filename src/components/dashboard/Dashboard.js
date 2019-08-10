@@ -18,7 +18,7 @@ class Dashboard extends Component {
         const { snapshots, error, isLoaded, auth } = this.props
         if(!auth.uid) return <Redirect to='/signin' />
 
-        //if(!isLoaded) return <RotatingLoadBar />
+        if(!isLoaded) return <RotatingLoadBar />
         else
             return (
                 <div className="dashboard container">
@@ -29,7 +29,7 @@ class Dashboard extends Component {
                                 {error ? <p>{error}</p> : null}
                             </div>
 
-                            <SnapshotList snapshots={snapshots}/>
+                            {snapshots ? <SnapshotList snapshots={snapshots}/> : null}
 
                         </div>
                     </div>
