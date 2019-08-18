@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { signIn } from '../../store/actions/authActions'
 import { Redirect } from 'react-router-dom'
+import AuthNavigation from './AuthNavigation'
+import './Auth.css';
 
 export class SignIn extends Component {
     state = {
@@ -26,28 +28,29 @@ export class SignIn extends Component {
         if(auth.uid) return <Redirect to='/' />
 
         return (
-            <div className="container">
-                <div className="row">
-                <form onSubmit={this.handleSubmit} className="white col s6 push-s3">
-                    <h5 className="grey-text text-darken-3">Sign In</h5>
-                    
-                    <div className="input-field">
-                        <label htmlFor="email">Email</label>
-                        <input type="email" id="email" onChange={this.handleChange}/>
-                    </div>
-                    
-                    <div className="input-field">
-                        <label htmlFor="password">Password</label>
-                        <input type="password" id="password" onChange={this.handleChange}/>
-                    </div>
-
-                    <div className="input-field">
-                        <button className="t-btn up-txt">Login</button>
+            <div className="content wrapper">
+                <div className="row center-xs">
+                    <AuthNavigation signIn={true}/>
+                </div>
+                <div className="row center-xs">
+                    <form className="form--auth col-xs-12 col-md-4" onSubmit={this.handleSubmit}>
+                        <div className="form--auth__input-field">
+                            <label htmlFor="password" className="form--auth__label">
+                                Email
+                            </label>
+                            <input type="email" id="email" className="form--auth__input" onChange={this.handleChange} required placeholder=" "/>
+                        </div>
+                        <div className="form--auth__input-field">
+                            <label htmlFor="password" className="form--auth__label">
+                                Password
+                            </label>
+                            <input type="password" id="password" className="form--auth__input" onChange={this.handleChange} required placeholder=" "/>
+                        </div>
+                        <button className="button--action text--upper"> login </button>
                         <div className="red-text center">
                             {signinError ? <p>{signinError}</p> : null}
                         </div>
-                    </div>
-                </form>
+                    </form>
                 </div>
             </div>
         )
