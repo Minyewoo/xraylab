@@ -13,7 +13,6 @@ const SnapshotDetails = (props) => {
     if (snapshot) {
 
         return (
-            
             <div className="container section snapshot-details">
                 <div className="card z-depth-0">
                     <div className="card-content">

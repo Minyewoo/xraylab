@@ -1,14 +1,17 @@
 import React from 'react';
 import moment from 'moment'
+import { Link } from 'react-router-dom'
+import "./Snapshot.css"
 
 const SnapshotSummary = ({snapshot}) => {
     return (
-        <div className="card z-depth-0 snapshot-summary">
-            <div className="card-content grey-text text-darken-3">
-                <span className="card-title">Snapshot #{snapshot.id}</span>
-                <p className="grey-text">{moment(new Date(snapshot.created)).calendar()}</p>
-            </div>
-        </div>
+        <div className="snapshot">
+            <img className="snapshot__img" src={process.env.PUBLIC_URL + snapshot.image_path} alt=''/>
+			<div className="snapshot__content content--snapshot"> 
+				<div className="content--snapshot__title"> {moment(new Date(snapshot.created)).calendar()} </div>
+				<Link className="content--snapshot__link--more" to={'/snapshot/' + snapshot.id} key={snapshot.id}> Details </Link>
+			</div>
+		</div>
     )
 }
 

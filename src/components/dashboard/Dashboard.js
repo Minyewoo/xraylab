@@ -1,42 +1,37 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import SnapshotList from '../snapshots/SnapshotList'
 import { connect } from 'react-redux'
 //import { firestoreConnect } from 'react-redux-firebase'
 //import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
-import {fetchSnapshots} from '../../store/actions/snapshotActions'
+import { fetchSnapshots } from '../../store/actions/snapshotActions'
 import RotatingLoadBar from '../layout/RotatingLoadBar'
+
 class Dashboard extends Component {
 
-    componentDidMount()
-    {
-       const {fetchSnapshots} = this.props;
-       fetchSnapshots();
+    componentDidMount() {
+        const { fetchSnapshots } = this.props;
+        fetchSnapshots();
     }
 
     render() {
         const { snapshots, error, isLoaded, auth } = this.props
-        if(!auth.uid) return <Redirect to='/signin' />
+        if (!auth.uid) return <Redirect to='/signin' />
 
-        if(!isLoaded) return <RotatingLoadBar />
+        if (!isLoaded) return <RotatingLoadBar />
         else
             return (
-                <div className="dashboard container">
-                    <div className="row">
-                        <div className="col s4 push-s4">
-
-                            <div className="red-text center">
-                                {error ? <p>{error}</p> : null}
-                            </div>
-
-                            {snapshots ? <SnapshotList snapshots={snapshots}/> : null}
-
+                <div className="content wrapper">
+                    <div className="row center-xs">
+                        <div className="red-text center">
+                            {error ? <p>{error}</p> : null}
                         </div>
+                        {snapshots ? <SnapshotList snapshots={snapshots} /> : null}
                     </div>
                 </div>
-        )
+            )
     }
-} 
+}
 
 const mapStateToProps = (state) => {
     console.log(state);

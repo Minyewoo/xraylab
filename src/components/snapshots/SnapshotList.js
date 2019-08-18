@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const SnapshotList = ({snapshots}) => {
     console.log(snapshots);
     return (
-        <div className="snapshot-list section">
+        <div className="dashboard col-xs-12">
             { snapshots && snapshots.map(snapshot => {
                 let index = snapshots.indexOf(snapshot);
                 return (
