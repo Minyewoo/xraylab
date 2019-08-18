@@ -30,5 +30,3 @@ store.firebaseAuthIsReady.then(() => {
     // Learn more about service workers: https://bit.ly/CRA-PWA
     serviceWorker.register();
 })
-
-
