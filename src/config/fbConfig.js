@@ -3,16 +3,15 @@ import 'firebase/firestore'
 import 'firebase/auth'
 
 const config = {
-    apiKey: "AIzaSyAArPuxAeSEnSYRgA6NECIN0DcSWGIUdTU",
-    authDomain: "xraylab-c64ad.firebaseapp.com",
-    databaseURL: "https://xraylab-c64ad.firebaseio.com",
-    projectId: "xraylab-c64ad",
-    storageBucket: "",
-    messagingSenderId: "40490136094",
-    appId: "1:40490136094:web:000c3adee98f526f"
-  };
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+};
 
-  firebase.initializeApp(config);
-  //firebase.firestore().settings({timestampsInSnapshots: true});
+firebase.initializeApp(config);
 
-  export default firebase;
+export default firebase;
