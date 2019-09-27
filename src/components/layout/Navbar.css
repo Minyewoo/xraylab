@@ -3,8 +3,12 @@
   display: flex;
   -webkit-justify-content: space-between;
           justify-content: space-between;
+  right: 0;
+  left: 0;
   height: 93px;
-  background: #ffffff;
+  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.9);
+  /* background: linear-gradient(180deg, rgba(255, 255, 255, 1.0) 0%, rgba(255, 255, 255, 0.70) 50%, rgba(255, 255, 255, 0.0) 100%); */
 }
 
 .header__logo {
@@ -54,6 +58,7 @@
 }
 
 .nav--header__link {
+  cursor: pointer;
   padding: 0 16px; 
   text-decoration: none;
   line-height: 93px;
@@ -62,6 +67,14 @@
 
 .nav--header__link:hover {
   color: #808080;
+}
+
+.nav--header__item:first-child .nav--header__link {
+  padding-left: 0;
+}
+
+.nav--header__item:last-child .nav--header__link {
+  padding-right: 0;
 }
 
 .nav--header__userpic {

@@ -1,10 +1,13 @@
+.snapshot__link--wrapper {
+	width: 100%;
+	height: 350px;
+}
+
 .snapshot {
 	cursor: pointer;
 	position: relative;
-	width: 380px;
-    height: 253px;
-    margin: 0 8px 8px 0;
-    
+	width: 100%;
+    height: 100%;    
     background-color: #C0C0C0;
 	border-radius: 5px; 
 	overflow: hidden;
@@ -14,6 +17,17 @@
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
+}
+
+.snapshot--new {
+	box-sizing: border-box;
+	background-color: inherit;
+	border: 2px solid #151515;
+}
+
+.snapshot--new .snapshot__img{
+	object-fit: none;
+	width: 96px;
 }
 
 .snapshot__content {
@@ -28,20 +42,19 @@
 	left: 0;	
 	width: 100%;
 	height: 100%;
-	opacity: 0;
 	transition: all .10s ease-in-out;
 }
 
-.snapshot__content:hover {
+.snapshot__content:hover .content--snapshot__link--more {
 	opacity: 1;
-	background-color: rgba(0,0,0,.4);
+	/* background-color: rgba(0,0,0,.4); */
 }
 
 .content--snapshot__title {
 	position: absolute;
 	top: 0;
 	left: 0;
-	margin: 32px;
+	margin: 16px;
 
 	font-family: Montserrat;
 	font-style: normal;
@@ -63,8 +76,86 @@
 	text-decoration: none;
 	border-bottom: 2px dashed #fff;
 	transition: all .10s ease-in-out;
+
+	opacity: 0;
 }
 
 .content--snapshot__link--more:hover {
 	border-bottom: 2px solid #fff;
+}
+
+.stroked {
+	padding: 4px;
+	margin: 0 0 2px 0;
+		 width: max-content;
+	width: -moz-max-content;
+	text-align: start;
+	background: #151515;
+}
+
+/* .stroked:last-child {
+	margin: 0;
+} */
+
+.content--snapshot__note {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	margin: 16px;
+
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 22px;
+
+	color: #FFFFFF;
+}
+
+/* Snapshot details  */
+
+.link--back {
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 22px;
+	
+	text-decoration: none;
+	float: right;
+	color: #000000;
+}
+
+.img--snapshot {
+	margin-top: 32px;
+	width: 100%;
+	border-radius: 5px;
+}
+
+#p--heatmap {
+	display: inline-block;
+	margin-right: 8px;
+}
+
+/* conclusion table */
+
+table, tr {
+	font-size: 24px;
+	line-height: 29px;
+	width: 100%;
+}
+
+td {
+	box-sizing: border-box;
+	width: 50%;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+}
+
+td:first-child {
+	text-align: right;
+}
+
+td:last-child {
+	text-align: left;
 }

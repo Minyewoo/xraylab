@@ -28,12 +28,12 @@ export class SignIn extends Component {
         if(auth.uid) return <Redirect to='/' />
 
         return (
-            <div className="content wrapper">
+            <div className="page-layout">
                 <div className="row center-xs">
                     <AuthNavigation signIn={true}/>
                 </div>
                 <div className="row center-xs">
-                    <form className="form--auth col-xs-12 col-md-4" onSubmit={this.handleSubmit}>
+                    <form className="form--auth col-md-4" onSubmit={this.handleSubmit}>
                         <div className="form--auth__input-field">
                             <label htmlFor="password" className="form--auth__label">
                                 Email

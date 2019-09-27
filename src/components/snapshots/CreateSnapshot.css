@@ -1,0 +1,83 @@
+/* .area-atch {
+    border: 5px dashed #f4f4f4;
+  
+    padding: 64px;
+  } */
+
+.img--atch {
+  /* margin: 32px 80px 32px 80px; */
+  /* width: calc(100% - 168px); */
+  padding: 16px 64px;
+  max-width: 100%;
+}
+
+.dialog--atch {
+  /* margin: 0 0 32px 0; */
+  padding-bottom: 32px; 
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+}
+
+.t-btn {
+    /* new */
+    position: relative;
+    /* !!! */
+    background: #151515;
+    border: none;
+    border-radius: 54px;
+    
+    padding: 12px 23px;
+  }
+  
+  .t-btn:hover {
+    background: #303030;
+  }
+  
+  .t-btn:active {
+    background: #404040;
+  }
+  
+  .up-txt {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    
+    text-align: center;
+    text-transform: uppercase;
+    
+    color: #ffffff;
+  }
+
+.thumbsContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 16px;
+}
+  
+.thumb  {
+    display: inline-flex;
+    margin-bottom: 8px;
+    margin-right: 8px;
+    width: 120px;
+    height: 120px;
+    box-sizing: border-box;
+}
+  
+.thumbImage {
+    display: block;
+    width: auto;
+    height: 100%;
+    border-radius: 8px;
+}
+
+.input-field {
+    margin-top: 32px;
+    text-align: center;
+}

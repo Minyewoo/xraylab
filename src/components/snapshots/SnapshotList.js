@@ -3,18 +3,18 @@ import SnapshotSummary from './SnapshotSummary';
 import { Link } from 'react-router-dom'
 
 const SnapshotList = ({snapshots}) => {
-    console.log(snapshots);
+    //console.log(snapshots);
     return (
-        <div className="dashboard col-xs-12">
+        <React.Fragment>
             { snapshots && snapshots.map(snapshot => {
-                let index = snapshots.indexOf(snapshot);
+                //let index = snapshots.indexOf(snapshot);
                 return (
-                    <Link to={'/snapshot/' + snapshot.id} key={snapshot.id}>
+                    <Link className="snapshot__link--wrapper" to={'/snapshot/' + snapshot.id} key={snapshot.id}>
                         <SnapshotSummary snapshot={snapshot}/>
                     </Link>
                 )
             })}
-        </div>
+        </React.Fragment>
     )
 }
 

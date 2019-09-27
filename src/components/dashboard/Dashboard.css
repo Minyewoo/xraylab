@@ -1,0 +1,10 @@
+.dashboard--grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      -webkit-box-align: start;
+    -webkit-align-items: start;
+         -ms-flex-align: start;
+            align-items: start;
+    justify-items: center;
+    grid-gap: .5rem .5rem;
+}

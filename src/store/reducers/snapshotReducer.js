@@ -9,8 +9,13 @@ const initState = {
 const snapshotReducer = (state = initState, action) => {
     switch (action.type) {
         case 'CREATE_SNAPSHOT':
-            console.log('created snapshot', action.snapshot);
-            return state;
+            //console.log('created snapshot', action.snapshot);
+            //state.snapshots.push(action.snapshot);
+            //console.log(state)
+            return {
+                ...state,
+                snapshots: state.snapshots.concat(action.snapshot)
+            }
 
         case 'CREATE_SNAPSHOT_ERROR':
             console.log('create snapshot error', action.error);
@@ -27,7 +32,7 @@ const snapshotReducer = (state = initState, action) => {
             }
 
         case 'FETCH_SNAPSHOTS_SUCCESS':
-                console.log('loaded snapshots', action.snapshots)
+            console.log('snapshots loaded')
 
             return {
                 ...state,

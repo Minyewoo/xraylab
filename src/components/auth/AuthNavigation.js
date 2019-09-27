@@ -14,7 +14,7 @@ class AuthNavigation extends React.Component {
 
     render() {
         return (
-            <ul className="nav--auth col-xs-12 col-md-4">
+            <ul className="nav--auth col-xs-12">
                 <li className="nav--auth__item nav__item" state={!this.state.signIn ? "current" : null}><NavLink className="nav--auth__link" to="/signup">Sign up</NavLink></li>
                 <li className="nav--auth__item nav__item" state={this.state.signIn ? "current" : null}><NavLink className="nav--auth__link" to='/signin'>Login</NavLink></li>
             </ul>
