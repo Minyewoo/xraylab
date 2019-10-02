@@ -107,6 +107,7 @@ input:checked + .slider:before {
 }
 
 .button--action {
+  cursor: pointer;
   position: relative;
   background: #151515;
   border: none;
@@ -124,10 +125,13 @@ input:checked + .slider:before {
   text-transform: uppercase;
   
   color: #ffffff;
+
+  transition-duration: 0.15s;
 }
 
 .button--action:hover {
-  background: #303030;
+  background: #aecee8;
+  color: #151515;
 }
 
 .button--action:active {
