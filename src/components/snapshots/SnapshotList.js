@@ -9,9 +9,7 @@ const SnapshotList = ({snapshots}) => {
             { snapshots && snapshots.map(snapshot => {
                 //let index = snapshots.indexOf(snapshot);
                 return (
-                    <Link className="snapshot__link--wrapper" to={'/snapshot/' + snapshot.id} key={snapshot.id}>
-                        <SnapshotSummary snapshot={snapshot}/>
-                    </Link>
+                        <SnapshotSummary snapshot={snapshot} key={snapshot.id}/>
                 )
             })}
         </React.Fragment>

@@ -7,7 +7,7 @@ import { fetchSnapshots } from '../../store/actions/snapshotActions'
 import RotatingLoadBar from '../layout/RotatingLoadBar'
 import './Dashboard.css';
 import { NavLink } from 'react-router-dom';
-class Dashboard extends Component {
+class DashboardPinned extends Component {
 
     componentDidMount() {
         const { fetchSnapshots } = this.props;
@@ -23,16 +23,12 @@ class Dashboard extends Component {
             return (
                 <div className="page-layout">
                     <div className="row center-xs">
-                    <ul className="nav--auth col-xs-12 nav--dashboard">
-                        <li className="nav--auth__item nav__item" state="current"><NavLink className="nav--auth__link" to="/dashboard/all">All</NavLink></li>
-                        <li className="nav--auth__item nav__item"><NavLink className="nav--auth__link" to='/dashboard/pinned'>Pinned</NavLink></li>
-                    </ul>
+                        <ul className="nav--auth col-xs-12 nav--dashboard">
+                            <li className="nav--auth__item nav__item"><NavLink className="nav--auth__link" to="/dashboard/all">All</NavLink></li>
+                            <li className="nav--auth__item nav__item" state="current"><NavLink className="nav--auth__link" to='/dashboard/pinned'>Pinned</NavLink></li>
+                        </ul>
                         <div className="dashboard--grid col-xs-12">
                             {snapshots ? <SnapshotList snapshots={snapshots} /> : ""}
-                            <div className="snapshot snapshot--new">
-					            <Link className="snapshot__link--wrapper" to={'/create'}> </Link>
-                                <img className="snapshot__img" src={process.env.PUBLIC_URL + "/img/add.png"} alt=''/>
-		                    </div>
                         </div>
                     </div>
                 </div>
@@ -45,7 +41,7 @@ const mapStateToProps = (state) => {
     return {
         //snapshots: state.firestore.ordered.snapshots,
         error: state.snapshot.get_error,
-        snapshots: state.snapshot.snapshots,
+        snapshots: state.snapshot.snapshots.filter(snapshot => snapshot.pinned),
         isPending: state.snapshot.isPending,
         isLoaded: state.snapshot.isLoaded,
         auth: state.firebase.auth
@@ -64,4 +60,4 @@ const mapDispatchToProps = (dispatch) => {
         { collection: 'snapshots' }
     ])
 )(Dashboard);*/
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardPinned);

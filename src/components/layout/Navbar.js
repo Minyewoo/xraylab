@@ -7,7 +7,7 @@ import './Navbar.css';
 
 const Navbar = (props) => {
     const { auth, profile } = props;
-    const links = auth.uid ? <SignedInLinks profile={profile} /> : <SignedOutLinks />
+    const links = auth.uid ? <SignedInLinks profile={profile} /> : <SignedOutLinks />;
     return (
         <div className="header wrapper fixed--top">
                 <Link to='/' className="header__logo">xraylab</Link>

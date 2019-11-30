@@ -25,7 +25,7 @@ export class SignUp extends Component {
 
     render() {
         const { auth } = this.props;
-        if(auth.uid) return <Redirect to='/' />
+        if(auth.uid) return <Redirect to='/dashboard/all' />
 
         return (
             <div className="page-layout">

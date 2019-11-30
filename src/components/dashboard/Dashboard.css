@@ -8,3 +8,8 @@
     justify-items: center;
     grid-gap: .5rem .5rem;
 }
+
+.nav--dashboard {
+  margin-top: 0;
+  margin-bottom: 64px !important;
+}

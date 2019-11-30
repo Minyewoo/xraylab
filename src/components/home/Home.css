@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,400&display=swap&subset=cyrillic');
+html, body {
+	margin: 0;
+	padding: 0;
+
+	background-color: #fff;
+}
+
+.main-layout {
+	display: flex; 
+	justify-content: center; 
+	overflow: auto;
+	
+	margin: 64px 0;
+}
+
+.project-description {
+	position: relative;
+	padding: 64px;
+	width: 650px;
+
+	font-family: Roboto Mono;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 32px;;
+}
+
+.project-description p {
+	margin: 24px 0;
+	color: #fff;
+	mix-blend-mode: difference;
+}
+
+.bg-block {
+	position: absolute;
+	background-color: #eaeaea;
+	mix-blend-mode: difference;
+}
+
+.first-block {
+	top: 180px;
+	left: 0;
+	
+	width: 210px;
+	height: 250px;
+}
+
+.second-block {
+	top: 190px;
+	right: -35px;
+	
+	width: 350px;
+	height: 330px;
+}
+
+.text--highlight {
+	padding: 0 4px;
+	margin: 0 -4px;
+	background-color: #d7e8f6;
+	color: #000;
+	filter: invert(1);
+}

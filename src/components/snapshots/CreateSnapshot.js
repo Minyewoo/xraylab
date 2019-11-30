@@ -6,64 +6,28 @@ import ReactResizeDetector from "react-resize-detector";
 import styled from "styled-components";
 import Dropzone from 'react-dropzone';
 import './CreateSnapshot.css'
+import XrayDropzone from "./XrayDropzone";
+import { booleanLiteralTypeAnnotation } from '@babel/types';
 
-const DashedArea = styled.div`
-    --containerWidth: ${props => props.containerWidth + "px"};
-    // --containerHeight: ${props => (props.containerHeight -78) + "px"};
-    --containerHeight: ${props => (props.containerwidth) + "px"};
-    // --dashSizeVertical: ${props => props.containerHeight / ~~(props.containerHeight / (props.dashSize * 2)) + "px"};
-    --dashSizeVertical: ${props => props.containerWidth / ~~(props.containerWidth / (props.dashSize * 2)) + "px"};
-    --dashSizeHorizontal: ${props => props.containerWidth / ~~(props.containerWidth / (props.dashSize * 2)) + "px"};
-    --dashColor: #151515;
-    
-    // padding: 0 0 32px 0;
-    height: var(--containerWidth);
-    box-sizing: border-box;
-    background-image: repeating-linear-gradient(
-            to right,
-            var(--dashColor) 0%,
-            var(--dashColor) 25%,
-            transparent 25%,
-            transparent 75%,
-            var(--dashColor) 75%,
-            var(--dashColor) 100%
-        ),
-        repeating-linear-gradient(
-            to right,
-            var(--dashColor) 0%,
-            var(--dashColor) 25%,
-            transparent 25%,
-            transparent 75%,
-            var(--dashColor) 75%,
-            var(--dashColor) 100%
-        ),
-        repeating-linear-gradient(
-            to bottom,
-            var(--dashColor) 0%,
-            var(--dashColor) 25%,
-            transparent 25%,
-            transparent 75%,
-            var(--dashColor) 75%,
-            var(--dashColor) 100%
-        ),
-        repeating-linear-gradient(
-            to bottom,
-            var(--dashColor) 0%,
-            var(--dashColor) 25%,
-            transparent 25%,
-            transparent 75%,
-            var(--dashColor) 75%,
-            var(--dashColor) 100%
-        );
-    background-position: left top, left bottom, left top, right top;
-    background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
-    background-size: var(--dashSizeHorizontal) 4px, var(--dashSizeHorizontal) 4px, 4px var(--dashSizeVertical),
-      4px var(--dashSizeVertical);
-`;
+function buildFileSelector(callback){
+    const fileSelector = document.createElement('input');
+    fileSelector.setAttribute('type', 'file');
+    fileSelector.setAttribute('multiple', 'multiple');
+
+    fileSelector.onchange = (e) => {
+        callback(Array.from(e.target.files));
+    }
+
+    return fileSelector;
+  }
 
 export class CreateSnapshot extends Component {
     state = {
         images: []
+    }
+
+    componentDidMount() {
+        this.fileSelector = buildFileSelector(this.handleImages);
     }
 
     addImage = (image) => {
@@ -72,7 +36,7 @@ export class CreateSnapshot extends Component {
         //const filenames = [];
         //images.map(file => filenames.push(file.name));
 
-        if (!images.includes(image))
+        if (!images.includes(image) && images.length < 5)
         {
             images.push(image);
             this.setState({images:  images });
@@ -80,8 +44,15 @@ export class CreateSnapshot extends Component {
     };
 
     handleImages = (acceptedFiles) => {
-        //var file = e.target.files[0];
-        //const stateKey = "image";
+        var files = acceptedFiles;
+
+        if (files.length > 0) files.forEach(file => {
+            this.handleImage(file);
+        });
+    }
+
+    handleImage = (acceptedFile) => {
+        var file = acceptedFile;
         const reader = new FileReader();
         const callback = this.addImage;
         const canvas = document.createElement("canvas");
@@ -120,9 +91,12 @@ export class CreateSnapshot extends Component {
         reader.onerror = function (err) {
             console.log(err);
         };
+        reader.readAsDataURL(file);
+    }
 
-        acceptedFiles.forEach(file => reader.readAsDataURL(file))
-        //reader.readAsDataURL(file);
+    handleFileSelect = (e) => {
+        e.preventDefault();
+        this.fileSelector.click();
     }
 
     handleImageCancel = (index) => {
@@ -139,14 +113,35 @@ export class CreateSnapshot extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.createSnapshot(this.state)
-        this.props.history.push('/dashboard')
+        if(this.state.images.length > 0)
+        {
+            this.props.createSnapshot(this.state)
+            this.props.history.push('/dashboard/all')
+        }
     }
 
     render() {
         const { auth } = this.props;
         if(!auth.uid) return <Redirect to='/signin' />
         const stateImages = this.state.images;
+
+        const imageCount = stateImages.length;
+        var dropzoneClassname = "noone-snap";
+        switch(true) {
+            case (imageCount === 0): dropzoneClassname = "noone-snap";
+                break;
+            case (imageCount === 1): dropzoneClassname = "one-snap";
+                break;
+            case (imageCount >=2 && imageCount < 3): dropzoneClassname = "some-snap";
+                break;
+            case (imageCount >= 3 && imageCount <= 4): dropzoneClassname = "many-snap";
+                break;
+            default: dropzoneClassname = "noone-snap";
+                break;
+        };
+
+        var disabled = imageCount > 0 ? '' : 'disabled';
+
         const images = stateImages.map( (image, index) => {
             return( 
                 <div className="thumb" key={index}>
@@ -156,35 +151,10 @@ export class CreateSnapshot extends Component {
         });
 
         return (
-            <div class="page-layout">
-                <div class="row center-xs middle-xs">
+            <div className="page-layout">
+                <div className={"row center-xs middle-xs " + dropzoneClassname}>
                     <form className="col-xs-8 col-md-4" onSubmit={this.handleSubmit} >
-                        <Dropzone onDrop={this.handleImages} accept="image/jpeg, image/png" noClick={true}>
-                            {({getRootProps, getInputProps}) => (
-                                <section className="">
-                                    <ReactResizeDetector handleWidth handleHeight>
-                                      {({ width, height }) => (
-                                        <DashedArea {...getRootProps({containerWidth: width, containerHeight: height, dashSize:40})}>
-                                            <img className="img--atch" src={process.env.PUBLIC_URL + "/img/area-img.png"} alt=''/>
-                                            <aside className="thumbsContainer">
-                                                {images}
-                                            </aside>
-                                            <input {...getInputProps()} />
-                                            <p className="dialog--atch">
-                                                Drag 'n' drop some files here
-                                            </p>
-                                            <p className="dialog--atch">
-                                                {width} x {height}
-                                            </p>
-                                        </DashedArea>
-                                      )}
-                                    </ReactResizeDetector>
-                                    <div className="input-field">
-                                        <button className="t-btn up-txt">Create</button>
-                                    </div>
-                                </section>
-                            )}
-                        </Dropzone>
+                        <XrayDropzone onDrop={this.handleImages} onFileSelect={this.handleFileSelect} images={images} styles={dropzoneClassname} disabled={disabled}></XrayDropzone>
                     </form>
                 </div>
             </div>

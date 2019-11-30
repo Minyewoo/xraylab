@@ -19,6 +19,8 @@ body {
 
 /* fonts style here */
 
+
+
 .text--upper {
   text-transform: uppercase;
 }
@@ -126,7 +128,7 @@ input:checked + .slider:before {
   
   color: #ffffff;
 
-  transition-duration: 0.15s;
+  transition-duration: 0.2s ;
 }
 
 .button--action:hover {
@@ -162,4 +164,24 @@ code {
 
 .card {
   background: #fafafa;
+}
+
+.icon {
+  display: inline-block;
+
+  width: 16px;
+  height: 100%;
+  text-align: center;
+  object-fit: contain;
+  /* vertical-align: middle; */
+}
+
+.icon--ml {
+  display: inline-block;
+
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  object-fit: contain;
+  vertical-align: text-bottom;
 }

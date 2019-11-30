@@ -1,3 +1,8 @@
+const communicationPair = {
+    client_adress: 'http://127.0.0.1:3000',
+    server_adress: 'http://116.203.222.52:3030',
+}
+
 export const signIn = (credentials) => {
     return (dispatch, getState, {getFirebase}) => {
         const firebase = getFirebase();
@@ -34,10 +39,11 @@ export const signUp = (newUser) => {
         ).then((resp) => {
 
             let data = { uid: resp.user.uid }
-            var request = new Request('http://localhost:5000/add_user', {
+            var request = new Request(communicationPair.server_adress +'/add_user', {
                 method: 'POST',
                 headers: new Headers({'Content-Type': 'application/json',
-                                      'Access-Control-Allow-Origin': 'http://localhost:3000'}),
+                                      'Access-Control-Allow-Origin': communicationPair.client_adress
+                }),
                 body: JSON.stringify(data)
             });
 

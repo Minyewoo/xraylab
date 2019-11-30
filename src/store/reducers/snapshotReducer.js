@@ -3,37 +3,52 @@ const initState = {
     snapshots: [],
     get_error: null,
     create_error: null,
-    isLoaded: false
+    delete_error: null,
+    isLoaded: false,
+    isDescriptionUpdated: false,
+    update_error: null,
+    pin_error: null,
+    unpin_error: null
 }
 
 const snapshotReducer = (state = initState, action) => {
     switch (action.type) {
         case 'CREATE_SNAPSHOT':
-            //console.log('created snapshot', action.snapshot);
-            //state.snapshots.push(action.snapshot);
-            //console.log(state)
             return {
                 ...state,
-                snapshots: state.snapshots.concat(action.snapshot)
+                snapshots: [action.snapshot].concat(state.snapshots)
             }
 
         case 'CREATE_SNAPSHOT_ERROR':
-            console.log('create snapshot error', action.error);
             return {
                 ...state,
                 create_error: action.error
             }
 
+            case 'DELETE_SNAPSHOT':
+                return {
+                    ...state,
+                    snapshots: state.snapshots.filter((value, index, arr) => {
+
+                        return value.id !== action.snapshot_id;
+                    
+                    })
+                }
+    
+            case 'DELETE_SNAPSHOT_ERROR':
+                return {
+                    ...state,
+                    delete_error: action.error
+                }
+
         case 'FETCH_SNAPSHOTS_PENDING':
-            console.log('pending loading') 
+            
             return {
                 ...state,
                 isPending: true
             }
 
         case 'FETCH_SNAPSHOTS_SUCCESS':
-            console.log('snapshots loaded')
-
             return {
                 ...state,
                 isPending: false,
@@ -42,11 +57,50 @@ const snapshotReducer = (state = initState, action) => {
             }
 
         case 'FETCH_SNAPSHOTS_ERROR':
-            console.log('snapshots loading error', action.error)
             return {
                 ...state,
                 isPending: false,
                 get_error: action.error
+            }
+
+        case 'UPDATE_DESCRIPTION':
+            
+            return {
+                ...state,
+                isDescriptionUpdated: true
+            }
+
+        case 'UPDATE_DESCRIPTION_ERROR':
+            
+            return {
+                ...state,
+                update_error: action.error
+            }
+
+        case 'PIN_SNAPSHOT':
+            
+            return {
+                ...state,
+            }
+
+        case 'PIN_SNAPSHOT_ERROR':
+            
+            return {
+                ...state,
+                pin_error: action.error
+            }
+
+        case 'UNPIN_SNAPSHOT':
+            
+            return {
+                ...state,
+            }
+    
+        case 'UNPIN_SNAPSHOT_ERROR':
+                
+            return {
+                ...state,
+                unpin_error: action.error
             }
 
         default:
